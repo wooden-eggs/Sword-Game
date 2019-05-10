@@ -8,6 +8,10 @@ public class Health : MonoBehaviour
     public float healthPoints = 1f;
     public float respawnHealthPoints = 1f;      //base health points
 
+    public enum Armour { AddedHealth,ReducedDamage}
+    public Armour armourMethod = Armour.AddedHealth;
+    public float armourPoints = 0f;
+
     public bool isImmune = false;
 
     public string SceneToLoad = "";
@@ -16,12 +20,11 @@ public class Health : MonoBehaviour
     private Quaternion respawnRotation;
 
     public Slider HealthBar;
+    public Image armour;
 
     // Start is called before the first frame update
     void Start()
     {
-        HealthBar.value = healthPoints * 100 / respawnHealthPoints;
-        HealthBar.GetComponentInChildren<Text>().text = "Health - " + healthPoints + " / " + respawnHealthPoints;
         // store initial position as respawn location
         respawnPosition = transform.position;
         respawnRotation = transform.rotation;
@@ -35,6 +38,14 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (armourPoints == 0)
+            armour.gameObject.SetActive(false);
+        else
+            armour.gameObject.SetActive(true);
+        armour.GetComponentInChildren<Text>().text = "Armour" + "\n" + armourPoints;
+        HealthBar.value = healthPoints * 100 / respawnHealthPoints;
+        HealthBar.GetComponentInChildren<Text>().text = "Health - " + healthPoints + " / " + respawnHealthPoints;
+
         if (healthPoints <= 0)
         {               // if the object is 'dead'
             transform.position = respawnPosition;   // reset the player to respawn position
@@ -48,15 +59,38 @@ public class Health : MonoBehaviour
     {
         if (!isImmune)
         {
-            healthPoints = healthPoints - amount;
-            HealthBar.value = healthPoints * 100 / respawnHealthPoints;
-            HealthBar.GetComponentInChildren<Text>().text = "Health - " + healthPoints + " / " + respawnHealthPoints;
+            switch(armourMethod)
+            {
+                case Armour.AddedHealth:
+                    if (armourPoints == 0)
+                    {
+                        healthPoints = healthPoints - amount;
+                    }
+                    else if (amount <= armourPoints)
+                    {
+                        armourPoints = armourPoints - amount;
+                    }
+                    else
+                    {
+                        healthPoints = healthPoints + armourPoints - amount;
+                        armourPoints = 0;
+                    }
+                    break;
+                case Armour.ReducedDamage:
+                    healthPoints = healthPoints - (amount - armourPoints);
+                        break;
+            }
         }
     }
 
     public void ApplyHeal(float amount)
     {
         healthPoints = healthPoints + amount;
+    }
+
+    public void AddArmour(float amount)
+    {
+        armourPoints = armourPoints + amount;
     }
 
     public void updateRespawn(Vector3 newRespawnPosition, Quaternion newRespawnRotation)
