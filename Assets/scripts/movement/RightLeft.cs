@@ -29,7 +29,10 @@ public class RightLeft : MonoBehaviour
         if (move.x != 0)
         {
             rb.velocity = new Vector2(move.x * speed, rb.velocity.y);
-            gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+            if(gameObject.GetComponent<Jump>().grounded)
+                gameObject.GetComponent<Animator>().SetBool("isWalking", true);
+            else
+                gameObject.GetComponent<Animator>().SetBool("isWalking", false);
         }
         Debug.DrawLine(rb.position,rb.position + rb.velocity,Color.green);
 

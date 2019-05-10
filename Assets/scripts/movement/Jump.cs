@@ -8,7 +8,7 @@ public class Jump : MonoBehaviour
     //saving collider
     private BoxCollider2D col;
     //checks if you can jump again
-    private bool grounded;
+    [HideInInspector]public bool grounded;
     LayerMask mask = 8;
     private bool lastFrameReleaseButton = false;
     private Rigidbody2D rb;
