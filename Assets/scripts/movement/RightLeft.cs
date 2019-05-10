@@ -29,6 +29,7 @@ public class RightLeft : MonoBehaviour
         if (move.x != 0)
         {
             rb.velocity = new Vector2(move.x * speed, rb.velocity.y);
+            gameObject.GetComponent<Animator>().SetBool("isWalking", true);
         }
         Debug.DrawLine(rb.position,rb.position + rb.velocity,Color.green);
 
@@ -40,6 +41,7 @@ public class RightLeft : MonoBehaviour
         if(Mathf.Abs(move.x) == 0)
         {
             rb.velocity = new Vector2(rb.velocity.x*cutMoveSpeed, rb.velocity.y);
+            gameObject.GetComponent<Animator>().SetBool("isWalking", false);
         }
     }
 
