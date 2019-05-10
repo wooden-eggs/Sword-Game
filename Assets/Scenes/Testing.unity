@@ -451,16 +451,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1453b49eba0012c44bfff1695c2de20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1861743183}
-  damping: 1
-  lookAheadFactor: 3
+  damping: 0.25
+  lookAheadFactor: 1
   lookAheadReturnSpeed: 0.5
-  lookAheadMoveThreshold: 0.1
+  lookAheadMoveThreshold: 7
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  cutMoveSpeed: 0
+  cutMoveSpeed: 0.7
   facingRight: 1
 --- !u!212 &1861743182
 SpriteRenderer:
@@ -1139,7 +1139,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0e18451d837ace84cb5ae97baedbe4ef, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b68d8118179a9a74ebfafcdcd554fc08, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1202,9 +1202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98aeda9b803631e43bdbfb01f52e562b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 50
-  dashDistance: 4
-  cooldown: 2
+  dashSpeed: 25
+  dashDistance: 4.3
+  cooldown: 0.7
 --- !u!114 &1861743186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,8 +1234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   respawnHealthPoints: 100
-  armourMethod: 1
-  armourPoints: 20
+  armourMethod: 0
+  armourPoints: 100000
   isImmune: 0
   SceneToLoad: 
   HealthBar: {fileID: 925746194}

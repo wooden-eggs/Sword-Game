@@ -8,7 +8,7 @@ public class Jump : MonoBehaviour
     //saving collider
     private BoxCollider2D col;
     //checks if you can jump again
-    [HideInInspector]public bool grounded;
+    public bool grounded;
     LayerMask mask = 8;
     private bool lastFrameReleaseButton = false;
     private Rigidbody2D rb;
@@ -39,5 +39,11 @@ public class Jump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpDecay);
             lastFrameReleaseButton = true;
         }
+
+        //I've added a jumping animation for gerzon
+        if(grounded)
+            gameObject.GetComponent<Animator>().SetBool("inAir", false);
+        else
+            gameObject.GetComponent<Animator>().SetBool("inAir", true);
     }
 }
