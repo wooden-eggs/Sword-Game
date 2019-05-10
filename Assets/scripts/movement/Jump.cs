@@ -9,6 +9,7 @@ public class Jump : MonoBehaviour
     private BoxCollider2D col;
     //checks if you can jump again
     private bool grounded;
+    private float colliderHeight;
     LayerMask mask;
     private bool lastFrameReleaseButton = false;
     private Rigidbody2D rb;
@@ -22,6 +23,7 @@ public class Jump : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         mask = LayerMask.GetMask("Ground");
+        colliderHeight = col.bounds.extents.y;
     }
 
     // Update is called once per frame
@@ -30,7 +32,7 @@ public class Jump : MonoBehaviour
         Vector2 jump = Vector2.zero;
         jump.y = Input.GetAxis("Jump");
         //checks if you touch a ground layer object
-        grounded = col.IsTouchingLayers(mask);
+        grounded = col.IsTouchingLayers(mask)&&isGrounded();
         if (jump.y > 0 && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump.y * jumpspeed);
@@ -41,5 +43,9 @@ public class Jump : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpDecay);
             lastFrameReleaseButton = true;
         }
+    }
+    public bool isGrounded()
+    {
+        return Physics2D.Raycast(transform.position, Vector3.down, colliderHeight+0.2f);
     }
 }
