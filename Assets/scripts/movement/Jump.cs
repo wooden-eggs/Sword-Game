@@ -14,9 +14,8 @@ public class Jump : MonoBehaviour
     private bool lastFrameReleaseButton = false;
     private Rigidbody2D rb;
     //set jump speed and how fast you fall when stopped pressing
-    public float jumpspeed = 10;
+    public float jumpspeed = 15;
     public float jumpDecay = 0.5f;
-    public float onAirJump = 0.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +23,7 @@ public class Jump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         mask = LayerMask.GetMask("Ground");
         colliderHeight = col.bounds.extents.y;
+        print(colliderHeight);
     }
 
     // Update is called once per frame
@@ -31,13 +31,15 @@ public class Jump : MonoBehaviour
     {
         Vector2 jump = Vector2.zero;
         jump.y = Input.GetAxis("Jump");
-        //checks if you touch a ground layer object
-        grounded = col.IsTouchingLayers(mask)&&isGrounded();
+        //checks if there is a ground layer object below you
+        grounded = isGrounded();
+        //make player jump if conditions are met
         if (jump.y > 0 && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump.y * jumpspeed);
             lastFrameReleaseButton = false;
         }
+        //make player start falling when he stops pressing jump
         if (jump.y == 0 && rb.velocity.y > 0 && !lastFrameReleaseButton)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpDecay);
@@ -46,6 +48,6 @@ public class Jump : MonoBehaviour
     }
     public bool isGrounded()
     {
-        return Physics2D.Raycast(transform.position, Vector3.down, colliderHeight+0.2f);
+        return Physics2D.Raycast(transform.position, Vector3.down, colliderHeight+0.2f,mask);
     }
 }
