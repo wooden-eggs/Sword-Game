@@ -21,8 +21,7 @@ public class Jump : MonoBehaviour
     {
         col = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        colliderHeight = col.size.y;
-        print(colliderHeight);
+        colliderHeight = col.bounds.extents.y;
         mask = LayerMask.GetMask("Ground");
     }
 
@@ -32,8 +31,9 @@ public class Jump : MonoBehaviour
         Vector2 jump = Vector2.zero;
         jump.y = Input.GetAxis("Jump");
         //checks if you touch a ground layer object
-        grounded = col.IsTouchingLayers();
-        //grounded = isGrounded();
+        //if you want to enable wall climbing switch between two statements
+        //grounded = col.IsTouchingLayers(mask);
+        grounded = isGrounded();
         if (jump.y > 0 && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jump.y * jumpspeed);
