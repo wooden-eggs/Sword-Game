@@ -15,10 +15,10 @@ public class Dash : MonoBehaviour
     private Rigidbody2D rb;
 
     private float dashTime;
-    private bool isDashing= false;
+    private bool isDashing = false;
     private bool onCooldown = false;
     private bool Fire1axisInUse;
-
+    [HideInInspector] public bool activeDashing = false;
     private LayerMask mask;
     RaycastHit2D collisionBuddy;
     void Awake()
@@ -33,6 +33,7 @@ public class Dash : MonoBehaviour
         {
             dashDir = DoDash(dashSpeed);
             Fire1axisInUse = true;
+            activeDashing = true;
         }
         if (Input.GetAxis("Fire1") == 0)
             Fire1axisInUse = false;
@@ -47,6 +48,7 @@ public class Dash : MonoBehaviour
             rb.velocity = Vector2.zero;
             isDashing = false;
             onCooldown = true;
+            activeDashing = false;
         }
         if(onCooldown)
         {
@@ -57,15 +59,6 @@ public class Dash : MonoBehaviour
         {
             onCooldown = false;
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-        }
-    }
-    void OnCollisionEnter2D(Collision2D collision)  
-    {
-
-        if (collision.gameObject.name.Equals("SecretWall"))
-        {
-            if (isDashing)
-                collision.gameObject.GetComponentInParent<Collider2D>().enabled = false;
         }
     }
     private int DoDash(float speed)

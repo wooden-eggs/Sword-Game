@@ -3136,9 +3136,9 @@ GameObject:
   - component: {fileID: 1861743189}
   - component: {fileID: 1861743188}
   - component: {fileID: 1861743190}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3282,6 +3282,7 @@ MonoBehaviour:
   dashSpeed: 25
   dashDistance: 4.3
   cooldown: 0.7
+  activeDashing: 0
 --- !u!114 &1861743186
 MonoBehaviour:
   m_ObjectHideFlags: 0
