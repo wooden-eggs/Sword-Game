@@ -85,7 +85,10 @@ public class Health : MonoBehaviour
 
     public void ApplyHeal(float amount)
     {
-        healthPoints = healthPoints + amount;
+        if (healthPoints + amount < respawnHealthPoints)
+            healthPoints = healthPoints + amount;
+        else
+            healthPoints = respawnHealthPoints;
     }
 
     public void AddArmour(float amount)

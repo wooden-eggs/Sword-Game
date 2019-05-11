@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\scripts\CameraMovement.cs" />
      <Compile Include="Assets\scripts\Damage.cs" />
+     <Compile Include="Assets\scripts\Heal.cs" />
      <Compile Include="Assets\scripts\movement\Dash.cs" />
      <Compile Include="Assets\scripts\movement\Jump.cs" />
      <Compile Include="Assets\scripts\movement\MovementInit.cs" />
