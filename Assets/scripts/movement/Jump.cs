@@ -23,7 +23,6 @@ public class Jump : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         mask = LayerMask.GetMask("Ground");
         colliderHeight = col.bounds.extents.y;
-        print(colliderHeight);
     }
 
     // Update is called once per frame
@@ -46,6 +45,7 @@ public class Jump : MonoBehaviour
             lastFrameReleaseButton = true;
         }
     }
+    //checks if player is on the ground
     public bool isGrounded()
     {
         return Physics2D.Raycast(transform.position, Vector3.down, colliderHeight+0.2f,mask);
