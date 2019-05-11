@@ -69,6 +69,7 @@
     <Compile Include="Assets\scripts\movement\Jump.cs" />
     <Compile Include="Assets\scripts\movement\MovementInit.cs" />
     <Compile Include="Assets\scripts\movement\RightLeft.cs" />
+    <Compile Include="Assets\scripts\movement\WallJump.cs" />
     <Compile Include="Assets\scripts\Player Stats\Health.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/tal/Projects/Sword-Game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

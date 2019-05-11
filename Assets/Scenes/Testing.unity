@@ -1709,16 +1709,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3381427566025250247, guid: cc3d85a1cafa11141bde22cc7007d760,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.356
-      objectReference: {fileID: 0}
-    - target: {fileID: 3381427566025250247, guid: cc3d85a1cafa11141bde22cc7007d760,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.97651887
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3d85a1cafa11141bde22cc7007d760, type: 3}
 --- !u!1 &925746192
@@ -2289,12 +2279,12 @@ PrefabInstance:
     - target: {fileID: 3381427566025250241, guid: cc3d85a1cafa11141bde22cc7007d760,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3381427566025250241, guid: cc3d85a1cafa11141bde22cc7007d760,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3d85a1cafa11141bde22cc7007d760, type: 3}
@@ -2689,12 +2679,12 @@ PrefabInstance:
     - target: {fileID: 3381427566025250247, guid: cc3d85a1cafa11141bde22cc7007d760,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.327066
+      value: 24.492
       objectReference: {fileID: 0}
     - target: {fileID: 3381427566025250247, guid: cc3d85a1cafa11141bde22cc7007d760,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.282
+      value: 10.348
       objectReference: {fileID: 0}
     - target: {fileID: 3381427566025250247, guid: cc3d85a1cafa11141bde22cc7007d760,
         type: 3}
@@ -2744,7 +2734,12 @@ PrefabInstance:
     - target: {fileID: 3381427566025250247, guid: cc3d85a1cafa11141bde22cc7007d760,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.65727
+      value: 17.533669
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381427566025250247, guid: cc3d85a1cafa11141bde22cc7007d760,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.70569175
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc3d85a1cafa11141bde22cc7007d760, type: 3}
@@ -3140,6 +3135,7 @@ GameObject:
   - component: {fileID: 1861743187}
   - component: {fileID: 1861743189}
   - component: {fileID: 1861743188}
+  - component: {fileID: 1861743190}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3354,6 +3350,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healAmount: 20
   numberOfPotions: 2
+--- !u!114 &1861743190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861743179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b7b26d143fefb4ebb5c26fe2c5b7fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onWall: 0
+  jumpspeed: 10
 --- !u!4 &1870516669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6765300656584775809, guid: 365c6d3f394cf944d965335a6272890d,
