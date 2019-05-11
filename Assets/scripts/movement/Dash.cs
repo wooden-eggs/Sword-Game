@@ -18,9 +18,13 @@ public class Dash : MonoBehaviour
     private bool isDashing= false;
     private bool onCooldown = false;
     private bool Fire1axisInUse;
+
+    private LayerMask mask;
+    RaycastHit2D collisionBuddy;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        mask = LayerMask.GetMask("Secret");
     }
 
     void FixedUpdate()
@@ -55,7 +59,15 @@ public class Dash : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
+    void OnCollisionEnter2D(Collision2D collision)  
+    {
 
+        if (collision.gameObject.name.Equals("SecretWall"))
+        {
+            if (isDashing)
+                collision.gameObject.GetComponentInParent<Collider2D>().enabled = false;
+        }
+    }
     private int DoDash(float speed)
     {
         cooldownCounter = cooldown;

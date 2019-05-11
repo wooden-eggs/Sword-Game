@@ -8,7 +8,7 @@ public class WallJump : MonoBehaviour
     //saving collider
     private BoxCollider2D col;
     //checks if you can jump again
-    public bool onWall;
+    private bool onWall;
     //for collision checks
     LayerMask mask;
     private float colliderWidth;
