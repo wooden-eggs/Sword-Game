@@ -38,6 +38,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Update the UI
         if (armourPoints == 0)
             armour.gameObject.SetActive(false);
         else
@@ -46,15 +47,15 @@ public class Health : MonoBehaviour
         HealthBar.value = healthPoints * 100 / respawnHealthPoints;
         HealthBar.GetComponentInChildren<Text>().text = "Health - " + healthPoints + " / " + respawnHealthPoints;
 
+        // if the object is 'dead'
         if (healthPoints <= 0)
-        {               // if the object is 'dead'
+        {
             transform.position = respawnPosition;   // reset the player to respawn position
             transform.rotation = respawnRotation;
             healthPoints = respawnHealthPoints; // give the player full health again
-            HealthBar.value = healthPoints * 100 / respawnHealthPoints;
-            HealthBar.GetComponentInChildren<Text>().text = "Health - " + healthPoints + " / " + respawnHealthPoints;
         }
     }
+
     public void ApplyDamage(float amount)
     {
         if (!isImmune)
@@ -77,8 +78,9 @@ public class Health : MonoBehaviour
                     }
                     break;
                 case Armour.ReducedDamage:
-                    healthPoints = healthPoints - (amount - armourPoints);
-                        break;
+                    if(amount- armourPoints > 0)
+                        healthPoints = healthPoints - (amount - armourPoints);
+                    break;
             }
         }
     }

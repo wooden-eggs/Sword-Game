@@ -29,7 +29,7 @@ public class Heal : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)                    // used for things like bullets, which are triggers.  
+    void OnTriggerEnter2D(Collider2D collision)  
     {
         if (numberOfPotions > 0)
         {
